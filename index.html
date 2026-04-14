@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papumero Unlocks - Phone Unlocking Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+    <style>
+        /* ============================================
+           ROOT & GLOBAL STYLES
+           ============================================ */
+        :root {
+            --primary-yellow: #FFD700;
+            --secondary-yellow: #F5C518;
+            --primary-black: #000000;
+            --dark-bg: #111111;
+            --text-light: #ffffff;
+            --accent-cyan: #00ffff;
+            --accent-purple: #9d4edd;
+            --success-green: #00d084;
+            --error-red: #ff4757;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-light);
+            background-color: var(--dark-bg);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           ANIMATED BACKGROUND
+           ============================================ */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0d0221 100%);
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        /* Circuit lines animation */
+        .circuit-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            animation: flow 10s infinite linear;
+        }
+
+        .circuit-line:nth-child(1) {
+            width: 80%;
+            height: 2px;
+            top: 20%;
+            left: -80%;
+            animation-delay: 0s;
+        }
+
+        .circuit-line:nth-child(2) {
+            width: 70%;
+            height: 2px;
+            top: 40%;
+            left: 100%;
+            animation-delay: 2s;
+            animation-direction: reverse;
+        }
+
+        .circuit-line:nth-child(3) {
+            width: 90%;
+            height: 2px;
+            top: 60%;
+            left: -90%;
+            animation-delay: 4s;
+        }
+
+        .circuit-line:nth-child(4) {
+            width: 75%;
+            height: 2px;
+            top: 80%;
+            left: 100%;
+            animation-delay: 6s;
+            animation-direction: reverse;
+        }
+
+        @keyframes flow {
+            to {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Floating dots */
+        .floating-dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .floating-dot:nth-child(5) {
+            width: 8px;
+            height: 8px;
+            top: 25%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-dot:nth-child(6) {
+            top: 45%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .floating-dot:nth-child(7) {
+            width: 6px;
+            height: 6px;
+            top: 65%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+
+        .floating-dot:nth-child(8) {
+            top: 80%;
+            right: 20%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 0.6;
+            }
+        }
+
+        /* Grid background */
+        .grid-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: grid-shift 20s linear infinite;
+        }
+
+        @keyframes grid-shift {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.95);
+            border-bottom: 2px solid var(--primary-yellow);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        .brand-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-yellow);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--primary-yellow);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+            color: var(--primary-black);
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-yellow);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .cta-button {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 2px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            box-shadow: none;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+            border: 2px solid var(--primary-yellow);
+            animation: float-image 3s ease-in-out infinite;
+        }
+
+        @keyframes float-image {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #aaaaaa;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           HOW IT WORKS SECTION
+           ============================================ */
+        .how-it-works {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: rgba(157, 78, 221, 0.1);
+            border: 2px solid rgba(157, 78, 221, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step:hover {
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+        }
+
+        .step-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: #aaaaaa;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================
+           CONTACT FORM MODAL
+           ============================================ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(17, 17, 17, 0.98), rgba(20, 20, 40, 0.98));
+            border: 2px solid var(--primary-yellow);
+            border-radius: 15px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primary-yellow);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+            color: var(--error-red);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--primary-yellow);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.05);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+            color: var(--primary-black);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 215, 0, 0.5);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Spinner in button */
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid rgba(0, 0, 0, 0.3);
+            border-top: 3px solid var(--primary-black);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background: rgba(0, 208, 132, 0.2);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 71, 87, 0.2);
+            color: var(--error-red);
+            border: 1px solid var(--error-red);
+            display: block;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            background: rgba(17, 17, 17, 0.95);
+            border-top: 2px solid var(--primary-yellow);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            color: #aaaaaa;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--primary-yellow);
+            background: transparent;
+            color: var(--primary-yellow);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+        }
+
+        .social-btn:hover:not(:disabled) {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .social-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .social-btn .spinner {
+            width: 18px;
+            height: 18px;
+            border-top-color: var(--primary-yellow);
+        }
+
+        .social-btn.active .spinner {
+            display: inline-block;
+        }
+
+        .social-btn:not(.active) .spinner {
+            display: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            padding-top: 2rem;
+            color: #888888;
+        }
+
+        .email-link {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* ============================================
+           RESPONSIVE DESIGN
+           ============================================ */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: flex;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(17, 17, 17, 0.98);
+                padding: 1.5rem;
+                gap: 1rem;
+                border-bottom: 2px solid var(--primary-yellow);
+            }
+
+            .brand-name {
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                margin-top: 100px;
+                padding: 2rem 1rem;
+                min-height: auto;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .cta-button {
+                width: 100%;
+            }
+
+            .services {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-name {
+                font-size: 1rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .social-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="grid-bg"></div>
+        <div class="circuit-container">
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-content">
+            <a href="#home" class="logo-section">
+                <img src="https://i.postimg.cc/BvdbdyvD/1776132767015.jpg" alt="Papumero Unlocks Logo" class="logo-img">
+                <span class="brand-name">Papumero Unlocks</span>
+            </a>
+            <nav id="nav">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="cta-button" id="headerQuoteBtn">Request Quote</button>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Unlock Your Phone Instantly</h1>
+                <p>Professional phone unlocking services for all major brands. Fast, secure, and reliable service across Papua New Guinea and the Pacific Islands.</p>
+                <div class="hero-buttons">
+                    <button class="cta-button" id="heroQuoteBtn">Request Quote</button>
+                    <button class="cta-button secondary-button" id="heroWhatsAppBtn">Contact WhatsApp</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop" alt="Unlocked Phones">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3>iPhone Unlocking</h3>
+                <p>Permanent unlock for all iPhone models. Works with all carriers worldwide. Compatible with iOS updates and future versions.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <h3>Samsung Unlocking</h3>
+                <p>Fast remote unlock service for Samsung Galaxy devices. No technical skills needed. Instant delivery of unlock codes.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Huawei & Oppo Unlock</h3>
+                <p>Professional unlocking for Huawei, Oppo, Vivo, and other brands. Codes delivered within 24 hours. Worldwide compatibility.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3>Pacific Islands Service</h3>
+                <p>Special rates for Fiji, Solomon Islands, Vanuatu, Samoa, and other Pacific nations. Fast and affordable unlocking solutions.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-lock-open"></i>
+                </div>
+                <h3>Carrier Unlock</h3>
+                <p>Carrier lock removal for all major networks. Keep your device, switch your provider. Permanent solution included.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Customer support available round the clock. WhatsApp, Facebook, and email assistance. Quick response times guaranteed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Contact Us</h3>
+                <p>Send your device details and IMEI number via our contact form or WhatsApp.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Get Quote</h3>
+                <p>Receive a quote within 1 hour. Transparent pricing with no hidden fees.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Confirmation</h3>
+                <p>Confirm the service and make payment through secure channels.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h3>Unlock Done</h3>
+                <p>Receive unlock codes or confirmation within 24 hours. Your phone is ready!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 style="font-family: 'Orbitron', sans-serif; color: var(--primary-yellow); margin-bottom: 1.5rem; font-size: 1.8rem;">Request Quote</h2>
+            <div class="form-message" id="formMessage"></div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="device">Device Model *</label>
+                    <input type="text" id="device" name="device" placeholder="e.g., iPhone 13 Pro, Samsung Galaxy S21" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="imei">IMEI Number (Optional)</label>
+                    <input type="text" id="imei" name="imei" placeholder="15-digit IMEI number">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your request..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">
+                    <span>Send Request</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3>Papumero Unlocks</h3>
+                    <p>Professional phone unlocking services for Papua New Guinea and the Pacific Islands.</p>
+                    <p><strong>Email:</strong> <a href="mailto:papumerounlocks@gmail.com" class="email-link">papumerounlocks@gmail.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#home" style="color: #aaaaaa; text-decoration: none;">Home</a></p>
+                    <p><a href="#services" style="color: #aaaaaa; text-decoration: none;">Services</a></p>
+                    <p><a href="#how-it-works" style="color: #aaaaaa; text-decoration: none;">How It Works</a></p>
+                    <p><a href="#contact" style="color: #aaaaaa; text-decoration: none;">Contact</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-buttons">
+                        <button class="social-btn" id="facebookBtn">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="spinner"></span>
+                        </button>
+                        <button class="social-btn" id="whatsappBtn">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="spinner"></span>
+                        </button>
+                        <button class="social-btn" id="emailBtn">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Papumero Unlocks. All rights reserved. | Premium Phone Unlocking Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // EMAILJS INITIALIZATION
+        // ============================================
+        emailjs.init('PudS2C4CpsT10OoiP');
+
+        // ============================================
+        // MODAL & FORM HANDLING
+        // ============================================
+        const contactModal = document.getElementById('contactModal');
+        const modalClose = document.getElementById('modalClose');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        const headerQuoteBtn = document.getElementById('headerQuoteBtn');
+        const heroQuoteBtn = document.getElementById('heroQuoteBtn');
+
+        // Open modal
+        function openContactModal() {
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeContactModal() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        headerQuoteBtn.addEventListener('click', openContactModal);
+        heroQuoteBtn.addEventListener('click', openContactModal);
+        modalClose.addEventListener('click', closeContactModal);
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                closeContactModal();
+            }
+        });
+
+        // Form submission with EmailJS
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner"></span><span>Sending...</span>';
+
+            try {
+                const response = await emailjs.send('service_rmuj4ns', 'template_lam4hw4', {
+                    to_email: 'papumerounlocks@gmail.com',
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    device: document.getElementById('device').value,
+                    imei: document.getElementById('imei').value || 'Not provided',
+                    message: document.getElementById('message').value,
+                    reply_to: document.getElementById('email').value
+                });
+
+                formMessage.classList.remove('error');
+                formMessage.classList.add('success');
+                formMessage.textContent = '✓ Quote request sent successfully! We\'ll contact you within 1 hour.';
+                
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    closeContactModal();
+                    formMessage.classList.remove('success');
+                }, 3000);
+
+            } catch (error) {
+                console.error('EmailJS error:', error);
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                formMessage.textContent = '✗ Failed to send request. Please try again or contact us directly.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Send Request</span>';
+            }
+        });
+
+        // ============================================
+        // SOCIAL BUTTONS WITH 5-SECOND SPINNER
+        // ============================================
+        const facebookBtn = document.getElementById('facebookBtn');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        const emailBtn = document.getElementById('emailBtn');
+
+        function handleSocialClick(btn, url, delay = 5000) {
+            if (btn.disabled) return;
+
+            btn.classList.add('active');
+            btn.disabled = true;
+
+            const timer = setTimeout(() => {
+                window.open(url, '_blank');
+                btn.classList.remove('active');
+                btn.disabled = false;
+            }, delay);
+
+            // Allow cancellation if clicked again during countdown
+            const clickHandler = () => {
+                clearTimeout(timer);
+                btn.classList.remove('active');
+                btn.disabled = false;
+                btn.removeEventListener('click', clickHandler);
+            };
+
+            btn.addEventListener('click', clickHandler);
+        }
+
+        facebookBtn.addEventListener('click', () => {
+            handleSocialClick(facebookBtn, 'https://www.facebook.com/profile.php?id=61559767562861');
+        });
+
+        whatsappBtn.addEventListener('click', () => {
+            handleSocialClick(whatsappBtn, 'https://wa.me/67571571523');
+        });
+
+        emailBtn.addEventListener('click', () => {
+            window.location.href = 'mailto:papumerounlocks@gmail.com';
+        });
+
+        // Footer WhatsApp button
+        const heroWhatsAppBtn = document.getElementById('heroWhatsAppBtn');
+        heroWhatsAppBtn.addEventListener('click', () => {
+            window.open('https://wa.me/67571571523', '_blank');
+        });
+
+        // ============================================
+        // MOBILE MENU TOGGLE
+        // ============================================
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // LAZY LOADING FOR IMAGES
+        // ============================================
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img').forEach(img => imageObserver.observe(img));
+        }
+    </script>
+</body>
+</html>
