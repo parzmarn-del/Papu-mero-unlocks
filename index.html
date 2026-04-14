@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papumero Unlocks - Premium Phone Unlocking Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-yellow: #FFD700;
+            --secondary-yellow: #F5C518;
+            --primary-black: #000000;
+            --dark-bg: #0f0f0f;
+            --dark-secondary: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #e0e0e0;
+            --border-color: rgba(255, 215, 0, 0.15);
+            --success-green: #00d084;
+            --error-red: #ff4757;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-light);
+            background-color: var(--dark-bg);
+            line-height: 1.6;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #0f0f0f 100%);
+            z-index: -2;
+        }
+
+        .grid-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.98);
+            border-bottom: 2px solid var(--primary-yellow);
+            padding: 1.5rem 3rem;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.15);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            border: 2px solid var(--primary-yellow);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .logo-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .brand-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-yellow);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-yellow);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+            color: var(--primary-black);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-yellow);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            margin-top: 110px;
+            padding: 8rem 3rem;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .hero-text p {
+            font-size: 1.4rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .cta-button {
+            padding: 1.3rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 3px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            border: 3px solid var(--primary-yellow);
+            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .hero-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .services {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 215, 0, 0.02);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1));
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        .how-it-works {
+            padding: 8rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            background: rgba(255, 215, 0, 0.02);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 215, 0, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .step:hover {
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.2);
+        }
+
+        .step:hover::before {
+            opacity: 1;
+        }
+
+        .step-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .step h3 {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--dark-secondary);
+            border: 2px solid var(--primary-yellow);
+            border-radius: 20px;
+            padding: 3.5rem;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.2);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-yellow);
+        }
+
+        .modal-content h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--primary-yellow);
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-light);
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.05);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.4rem;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--secondary-yellow));
+            color: var(--primary-black);
+            border: none;
+            border-radius: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .form-submit:hover:not(:disabled)::before {
+            left: 100%;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .spinner-inline {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            border-top: 3px solid var(--primary-black);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 0.7rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-message {
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            font-size: 1.05rem;
+            border: 2px solid;
+        }
+
+        .form-message.success {
+            background: rgba(0, 208, 132, 0.15);
+            color: var(--success-green);
+            border-color: var(--success-green);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 71, 87, 0.15);
+            color: var(--error-red);
+            border-color: var(--error-red);
+            display: block;
+        }
+
+        .social-btn {
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--primary-yellow);
+            background: transparent;
+            color: var(--primary-yellow);
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .social-btn:hover:not(:disabled) {
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .social-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .social-btn-spinner {
+            display: none;
+            width: 25px;
+            height: 25px;
+            border: 3px solid rgba(255, 215, 0, 0.2);
+            border-top: 3px solid var(--primary-yellow);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .social-btn.loading .social-btn-spinner {
+            display: block;
+        }
+
+        .social-btn.loading i {
+            display: none;
+        }
+
+        footer {
+            background: var(--dark-secondary);
+            border-top: 2px solid var(--primary-yellow);
+            padding: 4rem 3rem 2rem;
+            margin-top: 6rem;
+            box-shadow: 0 -4px 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            color: var(--text-gray);
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .email-link {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 2px solid var(--border-color);
+            padding-top: 2rem;
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            header {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .logo-img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .brand-name {
+                font-size: 1.4rem;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--dark-secondary);
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 2px solid var(--primary-yellow);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hero {
+                margin-top: 100px;
+                padding: 4rem 1.5rem;
+                min-height: auto;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .services, .how-it-works {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-grid, .process-steps {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .service-card, .step {
+                padding: 2.5rem;
+            }
+
+            .modal-content {
+                padding: 2.5rem;
+            }
+
+            .social-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .logo-section {
+                gap: 0.8rem;
+            }
+
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 2.5rem 1rem;
+                margin-top: 80px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .services, .how-it-works {
+                padding: 3rem 1rem;
+            }
+
+            .service-card, .step {
+                padding: 1.8rem;
+            }
+
+            .service-icon {
+                font-size: 2.5rem;
+            }
+
+            .step-number {
+                font-size: 2.5rem;
+            }
+
+            .social-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.2rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                border-radius: 15px;
+            }
+
+            .footer-section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg">
+        <div class="grid-pattern"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <a href="#home" class="logo-section">
+                <img src="https://i.postimg.cc/BvdbdyvD/1776132767015.jpg" alt="Papumero Unlocks Logo" class="logo-img">
+                <span class="brand-name">Papumero Unlocks</span>
+            </a>
+            <nav id="nav">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="cta-button" id="headerQuoteBtn">Request Quote</button>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Unlock Your Phone Instantly</h1>
+                <p>Professional phone unlocking services for all major brands. Fast, secure, and reliable service across Papua New Guinea and the Pacific Islands. Available 24/7 support.</p>
+                <div class="hero-buttons">
+                    <button class="cta-button" id="heroQuoteBtn">Request Quote</button>
+                    <button class="cta-button secondary-button" id="heroWhatsAppBtn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Now
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=600&h=600&fit=crop" alt="Unlocked Phones" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">Our Premium Services</h2>
+        <p class="section-subtitle">Comprehensive unlocking solutions for all devices and carriers</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fab fa-apple"></i></div>
+                <h3>iPhone Unlocking</h3>
+                <p>Permanent unlock for all iPhone models. Works with all carriers worldwide. Compatible with iOS updates.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fab fa-android"></i></div>
+                <h3>Samsung Unlocking</h3>
+                <p>Fast remote unlock service for Samsung Galaxy devices. Instant delivery of unlock codes. No technical skills needed.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Huawei & Oppo Unlock</h3>
+                <p>Professional unlocking for Huawei, Oppo, Vivo, and other brands. Codes delivered within 24 hours.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-globe"></i></div>
+                <h3>Pacific Islands Service</h3>
+                <p>Special rates for Fiji, Solomon Islands, Vanuatu, Samoa, Kiribati, and other Pacific nations.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-lock-open"></i></div>
+                <h3>Carrier Lock Removal</h3>
+                <p>Remove carrier locks from all major networks. Keep your device, switch providers anytime. Permanent solution.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Customer Support</h3>
+                <p>Round-the-clock support via WhatsApp, Facebook, and email. Quick response times. Expert assistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Simple 4-step process to get your phone unlocked</p>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Contact Us</h3>
+                <p>Send your device details and IMEI via our contact form or WhatsApp. We'll get back to you within 1 hour.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Receive Quote</h3>
+                <p>Get a transparent quote with no hidden fees. Competitive pricing for all device types and carriers.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Make Payment</h3>
+                <p>Confirm the service and make payment through secure channels. Multiple payment options available.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h3>Unlock Complete</h3>
+                <p>Receive unlock codes or confirmation within 24 hours. Your phone is ready to use with any carrier!</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <h2>Request Your Quote</h2>
+            <div class="form-message" id="formMessage"></div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+675 7157 1523" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Type</label>
+                    <input type="text" id="service" name="service" placeholder="e.g., iPhone Unlocking" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your request..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">Send Request</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3>Papumero Unlocks</h3>
+                    <p>Professional phone unlocking services for Papua New Guinea and the Pacific Islands. Premium quality. Fast delivery. 24/7 support.</p>
+                    <p><a href="mailto:papumerounlocks@gmail.com" class="email-link">papumerounlocks@gmail.com</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#home" style="color: var(--text-gray); text-decoration: none; font-size: 1.05rem;">Home</a></p>
+                    <p><a href="#services" style="color: var(--text-gray); text-decoration: none; font-size: 1.05rem;">Services</a></p>
+                    <p><a href="#how-it-works" style="color: var(--text-gray); text-decoration: none; font-size: 1.05rem;">How It Works</a></p>
+                    <p><a href="#contact" style="color: var(--text-gray); text-decoration: none; font-size: 1.05rem;">Contact</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-buttons">
+                        <button class="social-btn" id="facebookBtn" type="button" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="social-btn-spinner"></span>
+                        </button>
+                        <button class="social-btn" id="whatsappBtn" type="button" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="social-btn-spinner"></span>
+                        </button>
+                        <button class="social-btn" id="emailBtn" type="button" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Papumero Unlocks. All rights reserved. | Premium Phone Unlocking Services</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        emailjs.init('PudS2C4CpsT10OoiP');
+
+        const contactModal = document.getElementById('contactModal');
+        const modalClose = document.getElementById('modalClose');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function openModal() {
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('headerQuoteBtn').addEventListener('click', openModal);
+        document.getElementById('heroQuoteBtn').addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nameValue = document.getElementById('name').value.trim();
+            const emailValue = document.getElementById('email').value.trim();
+            const phoneValue = document.getElementById('phone').value.trim();
+            const serviceValue = document.getElementById('service').value.trim();
+            const messageValue = document.getElementById('message').value.trim();
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-inline"></span>Sending...';
+            formMessage.classList.remove('success', 'error');
+            formMessage.textContent = '';
+
+            const templateData = {
+                name: nameValue,
+                email: emailValue,
+                phone: phoneValue,
+                service: serviceValue,
+                message: messageValue,
+                time: new Date().toLocaleString()
+            };
+
+            try {
+                await emailjs.send(
+                    'service_rmuj4ns',
+                    'template_3gl0agg',
+                    templateData
+                );
+
+                formMessage.classList.add('success');
+                formMessage.innerHTML = '✓ Quote sent successfully! We\'ll contact you within 1 hour.';
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    closeModal();
+                    formMessage.classList.remove('success');
+                }, 2500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                formMessage.classList.add('error');
+                formMessage.innerHTML = '✗ Failed to send. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Request';
+            }
+        });
+
+        function setupSocialButton(btnId, url) {
+            const btn = document.getElementById(btnId);
+            btn.addEventListener('click', () => {
+                if (btn.disabled) return;
+                btn.classList.add('loading');
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    window.open(url, '_blank');
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                }, 5000);
+            });
+        }
+
+        setupSocialButton('facebookBtn', 'https://www.facebook.com/profile.php?id=61559767562861');
+        setupSocialButton('whatsappBtn', 'https://wa.me/67571571523');
+        
+        document.getElementById('emailBtn').addEventListener('click', () => {
+            window.location.href = 'mailto:papumerounlocks@gmail.com';
+        });
+
+        document.getElementById('heroWhatsAppBtn').addEventListener('click', () => {
+            window.open('https://wa.me/67571571523', '_blank');
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
