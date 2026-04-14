@@ -965,7 +965,7 @@
             }
         });
 
-        // Form submission
+        // Form submission - FIXED TO MATCH TEMPLATE VARIABLES
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -974,21 +974,26 @@
             formMessage.classList.remove('success', 'error');
             formMessage.textContent = '';
 
+            // THIS IS THE KEY FIX - variable names MUST match template {{name}}, {{email}}, etc.
             const templateData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value,
+                name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                service: document.getElementById('service').value.trim(),
+                message: document.getElementById('message').value.trim(),
                 time: new Date().toLocaleString()
             };
 
+            console.log('Sending data:', templateData); // For debugging
+
             try {
-                await emailjs.send(
+                const response = await emailjs.send(
                     'service_rmuj4ns',
                     'template_3gl0agg',
                     templateData
                 );
+
+                console.log('Email sent successfully:', response);
 
                 formMessage.classList.add('success');
                 formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Quote sent successfully! We\'ll contact you within 1 hour.';
@@ -1000,7 +1005,7 @@
                 }, 2500);
 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error sending email:', error);
                 formMessage.classList.add('error');
                 formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send. Please try again.';
             } finally {
@@ -1075,4 +1080,4 @@
         });
     </script>
 </body>
-</html>
+                </html>
