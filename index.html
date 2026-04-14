@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Papumero Unlocks · Premium Phone Unlocking</title>
-    <!-- Clear, modern fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Papumero Unlocks - Premium Phone Unlocking Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
@@ -16,120 +15,76 @@
         }
 
         :root {
-            --primary-blue: #0A66C2;
-            --accent-blue: #00A8FF;
-            --deep-blue: #0B2545;
-            --dark-bg: #0A0F1F;
-            --surface-dark: #131B2F;
-            --text-light: #FFFFFF;
-            --text-soft: #E0E7FF;
-            --text-muted: #9AB3D0;
-            --success: #00D084;
-            --error: #FF4757;
-            --border-glow: rgba(0, 168, 255, 0.3);
+            --primary-yellow: #FFD700;
+            --secondary-yellow: #F5C518;
+            --primary-black: #000000;
+            --dark-bg: #0f0f0f;
+            --dark-secondary: #1a1a1a;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --border-color: rgba(255, 215, 0, 0.1);
+            --success-green: #00d084;
+            --error-red: #ff4757;
         }
 
         html, body {
             width: 100%;
             height: 100%;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: var(--text-light);
             background-color: var(--dark-bg);
-            line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
         }
 
-        /* TECH BACKGROUND with moving grid & orbs */
+        /* ============================================
+           BACKGROUND
+           ============================================ */
         .animated-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, #13203A, #0A0F1F);
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #0f0f0f 100%);
             z-index: -2;
-            overflow: hidden;
         }
 
-        .tech-grid {
+        .grid-pattern {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 168, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 168, 255, 0.08) 1px, transparent 1px);
-            background-size: 70px 70px;
-            animation: gridMove 35s linear infinite;
-            z-index: 1;
+                linear-gradient(rgba(255, 215, 0, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.5;
         }
 
-        @keyframes gridMove {
-            0% { background-position: 0 0; }
-            100% { background-position: 70px 70px; }
-        }
-
-        .glow-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.25;
-            z-index: 0;
-        }
-
-        .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: #0066FF;
-            top: -150px;
-            left: -150px;
-            animation: floatOrb 22s infinite alternate;
-        }
-
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: #00A8FF;
-            bottom: -100px;
-            right: -100px;
-            animation: floatOrb 25s infinite alternate-reverse;
-        }
-
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: #3A7BD5;
-            top: 40%;
-            left: 70%;
-            animation: floatOrb 28s infinite alternate;
-        }
-
-        @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 40px) scale(1.1); }
-        }
-
-        /* Header */
+        /* ============================================
+           HEADER
+           ============================================ */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 20, 35, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(0, 168, 255, 0.3);
+            background: rgba(15, 15, 15, 0.95);
+            border-bottom: 1px solid var(--border-color);
             padding: 1rem 2rem;
             z-index: 1000;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
         }
 
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -142,121 +97,83 @@
         }
 
         .logo-img {
-            width: 52px;
-            height: 52px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 168, 255, 0.4);
-            border: 2px solid var(--accent-blue);
-            transition: transform 0.3s ease, box-shadow 0.3s;
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            border: 1px solid var(--primary-yellow);
+            transition: all 0.3s ease;
         }
 
         .logo-img:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 30px var(--accent-blue);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
         }
 
         .brand-name {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: white;
-            letter-spacing: -0.02em;
-        }
-        .brand-name span {
-            color: var(--accent-blue);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-yellow);
+            letter-spacing: 1px;
         }
 
         nav {
             display: flex;
-            gap: 2.2rem;
+            gap: 2rem;
             align-items: center;
         }
 
         nav a {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-soft);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-light);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-blue);
-            transition: width 0.25s;
+            font-weight: 500;
         }
 
         nav a:hover {
-            color: white;
-        }
-        nav a:hover::after {
-            width: 100%;
+            color: var(--primary-yellow);
         }
 
         .cta-button {
-            background: var(--primary-blue);
-            color: white;
-            padding: 0.85rem 2rem;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            padding: 0.7rem 1.8rem;
             border: none;
-            border-radius: 40px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
+            border-radius: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.25s;
-            box-shadow: 0 8px 18px rgba(10, 102, 194, 0.3);
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(4px);
-        }
-
-        .cta-button i {
-            margin-right: 6px;
+            letter-spacing: 0.5px;
         }
 
         .cta-button:hover {
-            background: #0A7AFF;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0, 168, 255, 0.4);
-        }
-
-        .secondary-button {
-            background: transparent;
-            border: 2px solid var(--accent-blue);
-            color: white;
-            box-shadow: none;
-        }
-        .secondary-button:hover {
-            background: rgba(0, 168, 255, 0.1);
-            border-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
         }
 
         .menu-toggle {
             display: none;
-            background: transparent;
-            border: 1px solid var(--accent-blue);
-            color: var(--accent-blue);
-            font-size: 1.6rem;
-            padding: 0.3rem 0.9rem;
-            border-radius: 8px;
+            background: none;
+            border: none;
+            color: var(--primary-yellow);
+            font-size: 1.5rem;
             cursor: pointer;
         }
 
-        /* Hero */
+        /* ============================================
+           HERO SECTION
+           ============================================ */
         .hero {
-            margin-top: 100px;
-            padding: 4rem 2rem 6rem;
-            min-height: 700px;
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -267,28 +184,26 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            max-width: 1400px;
+            max-width: 1200px;
             align-items: center;
             width: 100%;
-            z-index: 10;
         }
 
         .hero-text h1 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 3.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            background: linear-gradient(to right, #fff, #B0D4FF);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            line-height: 1.2;
             margin-bottom: 1.5rem;
+            letter-spacing: 1px;
         }
 
         .hero-text p {
-            font-size: 1.2rem;
-            color: var(--text-soft);
-            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
         }
 
         .hero-buttons {
@@ -297,144 +212,171 @@
             flex-wrap: wrap;
         }
 
+        .hero-buttons .cta-button {
+            padding: 1rem 2.2rem;
+        }
+
+        .secondary-button {
+            background: transparent;
+            border: 2px solid var(--primary-yellow);
+            color: var(--primary-yellow);
+        }
+
+        .secondary-button:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
         .hero-image img {
             width: 100%;
-            max-width: 550px;
-            border-radius: 24px;
-            box-shadow: 0 25px 40px -10px rgba(0, 168, 255, 0.3);
-            border: 2px solid rgba(0, 168, 255, 0.3);
-            transition: transform 0.3s;
-            animation: float-img 5s infinite alternate;
+            max-width: 480px;
+            border-radius: 12px;
+            border: 2px solid var(--primary-yellow);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.15);
+            transition: all 0.3s ease;
         }
 
-        @keyframes float-img {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-12px); }
+        .hero-image img:hover {
+            transform: scale(1.02);
         }
 
-        /* Services */
+        /* ============================================
+           SERVICES SECTION
+           ============================================ */
         .services {
             padding: 5rem 2rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
             text-align: center;
-            margin-bottom: 0.75rem;
-        }
-        .section-title i {
-            color: var(--accent-blue);
-            margin-right: 10px;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .section-subtitle {
             text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 3.5rem;
-            font-size: 1.15rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            font-size: 1rem;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
         }
 
         .service-card {
-            background: rgba(19, 27, 47, 0.7);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 168, 255, 0.2);
-            border-radius: 24px;
-            padding: 2.2rem 2rem;
-            transition: all 0.3s;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.3);
         }
 
         .service-card:hover {
-            border-color: var(--accent-blue);
-            background: rgba(10, 102, 194, 0.15);
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -8px rgba(0, 168, 255, 0.25);
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.02);
+            transform: translateY(-3px);
         }
 
         .service-icon {
-            font-size: 2.8rem;
-            color: var(--accent-blue);
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: white;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-light);
             margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         .service-card p {
-            color: var(--text-soft);
-            font-size: 0.98rem;
+            color: var(--text-gray);
             line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        /* How it works */
+        /* ============================================
+           HOW IT WORKS
+           ============================================ */
         .how-it-works {
             padding: 5rem 2rem;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
         }
 
         .step {
-            background: rgba(19, 27, 47, 0.7);
-            border: 1px solid rgba(0, 168, 255, 0.25);
-            border-radius: 20px;
-            padding: 2.2rem 1.8rem;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
             text-align: center;
-            backdrop-filter: blur(5px);
-            transition: 0.2s;
+            transition: all 0.3s ease;
         }
 
         .step:hover {
-            border-color: var(--accent-blue);
-            background: rgba(10, 102, 194, 0.12);
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.02);
         }
 
         .step-number {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 800;
-            color: var(--accent-blue);
-            opacity: 0.9;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            margin-bottom: 0.8rem;
         }
 
         .step h3 {
-            color: white;
-            margin: 0.8rem 0 0.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
-        /* Modal */
+        .step p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           MODAL
+           ============================================ */
         .modal-overlay {
             display: none;
             position: fixed;
-            inset: 0;
-            background: rgba(5, 12, 24, 0.9);
-            backdrop-filter: blur(10px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
         }
 
         .modal-overlay.active {
@@ -442,372 +384,695 @@
         }
 
         .modal-content {
-            background: var(--surface-dark);
-            border: 1px solid var(--accent-blue);
-            border-radius: 32px;
+            background: var(--dark-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 2.5rem;
             width: 90%;
-            max-width: 650px;
+            max-width: 600px;
+            position: relative;
+            animation: slideUp 0.3s ease;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 30px 50px rgba(0, 168, 255, 0.2);
-            position: relative;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-close {
             position: absolute;
-            top: 1.8rem;
-            right: 1.8rem;
+            top: 1.5rem;
+            right: 1.5rem;
             background: none;
             border: none;
-            color: var(--accent-blue);
+            color: var(--text-light);
             font-size: 1.8rem;
             cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-yellow);
         }
 
         .modal-content h2 {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: white;
-            margin-bottom: 2rem;
-            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
         }
 
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: #0E1628;
-            border: 1.5px solid #2A3A5A;
-            color: white;
-            border-radius: 16px;
-            font-family: 'Inter', sans-serif;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: var(--accent-blue);
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-yellow);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-light);
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
-            box-shadow: 0 0 0 3px rgba(0,168,255,0.2);
-        }
-        .form-submit {
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 40px;
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.03);
         }
 
-        /* Social buttons with spinner */
-        .social-btn {
-            width: 56px;
-            height: 56px;
-            border: 2px solid var(--accent-blue);
-            background: transparent;
-            color: var(--accent-blue);
-            border-radius: 18px;
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-yellow);
+            color: var(--primary-black);
+            border: none;
+            border-radius: 6px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 1.5rem;
-            transition: 0.2s;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+
+        .form-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .form-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .spinner-inline {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+            border-top: 2px solid var(--primary-black);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        .form-message.success {
+            background: rgba(0, 208, 132, 0.15);
+            color: var(--success-green);
+            border: 1px solid var(--success-green);
+            display: block;
+        }
+
+        .form-message.error {
+            background: rgba(255, 71, 87, 0.15);
+            color: var(--error-red);
+            border: 1px solid var(--error-red);
+            display: block;
+        }
+
+        /* ============================================
+           SOCIAL BUTTONS
+           ============================================ */
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--primary-yellow);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
 
-        .social-btn:hover {
-            background: var(--primary-blue);
-            color: white;
-            border-color: white;
+        .social-btn:hover:not(:disabled) {
+            border-color: var(--primary-yellow);
+            background: rgba(255, 215, 0, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .social-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         .social-btn-spinner {
             display: none;
-            width: 22px;
-            height: 22px;
-            border: 3px solid rgba(255,255,255,0.2);
-            border-top-color: white;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-top: 2px solid var(--primary-yellow);
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
-            position: absolute;
+        }
+
+        .social-btn.loading .social-btn-spinner {
+            display: block;
         }
 
         .social-btn.loading i {
             display: none;
         }
-        .social-btn.loading .social-btn-spinner {
-            display: block;
-        }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
-
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
-            background: #0B1425;
-            border-top: 1px solid rgba(0,168,255,0.3);
-            padding: 3rem 2rem 2rem;
+            background: var(--dark-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 5rem;
         }
 
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* responsive */
-        @media (max-width: 768px) {
-            .menu-toggle { display: block; }
-            nav { display: none; flex-direction: column; background: #0A1424; position: absolute; top: 80px; left: 0; right: 0; padding: 1.5rem; border-bottom: 2px solid var(--accent-blue); }
-            nav.active { display: flex; }
-            .hero-content { grid-template-columns: 1fr; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .brand-name { font-size: 1.2rem; }
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
-        /* Spinner inline */
-        .spinner-inline {
-            width: 20px; height: 20px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s infinite; display: inline-block;
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary-yellow);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section p {
+            color: var(--text-gray);
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .email-link {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: var(--dark-secondary);
+                padding: 1.5rem;
+                gap: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .brand-name {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 3rem 1.5rem;
+                min-height: auto;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services, .how-it-works {
+                padding: 3rem 1.5rem;
+            }
+
+            .services-grid, .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.8rem;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .social-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="animated-bg">
-        <div class="tech-grid"></div>
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-        <div class="glow-orb orb-3"></div>
+        <div class="grid-pattern"></div>
     </div>
 
-    <!-- Header -->
     <header>
         <div class="header-content">
             <a href="#home" class="logo-section">
                 <img src="https://i.postimg.cc/BvdbdyvD/1776132767015.jpg" alt="Papumero Unlocks Logo" class="logo-img">
-                <span class="brand-name">Papumero <span>Unlocks</span></span>
+                <span class="brand-name">Papumero Unlocks</span>
             </a>
             <nav id="nav">
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
-                <a href="#how-it-works">Process</a>
+                <a href="#how-it-works">How It Works</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <button class="cta-button" id="headerQuoteBtn"><i class="fas fa-bolt"></i> Request Quote</button>
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <button class="cta-button" id="headerQuoteBtn">Request Quote</button>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Hero -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Unlock freedom.<br>Any phone, any network.</h1>
-                <p>Premium unlocking for iPhone, Samsung, Huawei & more. Serving Papua New Guinea and the Pacific. Fast • Secure • 24/7.</p>
+                <h1>Unlock Your Phone Instantly</h1>
+                <p>Professional phone unlocking services for all major brands. Fast, secure, and reliable service across Papua New Guinea and the Pacific Islands.</p>
                 <div class="hero-buttons">
-                    <button class="cta-button" id="heroQuoteBtn"><i class="fas fa-paper-plane"></i> Get quote</button>
-                    <button class="cta-button secondary-button" id="heroWhatsAppBtn"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                    <button class="cta-button" id="heroQuoteBtn">Request Quote</button>
+                    <button class="cta-button secondary-button" id="heroWhatsAppBtn">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
                 </div>
             </div>
             <div class="hero-image">
-                <!-- Tech phone image -->
-                <img src="https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Unlocked smartphone display" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=600&h=600&fit=crop" alt="Unlocked Phones" loading="lazy">
             </div>
         </div>
     </section>
 
-    <!-- Services (no pricing, descriptive) -->
     <section id="services" class="services">
-        <h2 class="section-title"><i class="fas fa-cube"></i> Premium unlock services</h2>
-        <p class="section-subtitle">Permanent, carrier-grade unlocks — no jailbreak, no hassle</p>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive unlocking solutions for all devices</p>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon"><i class="fab fa-apple"></i></div>
-                <h3>iPhone Unlock</h3>
-                <p>Factory IMEI unlock for all iPhone models. Works globally, iOS updates safe. Retain full functionality and warranty.</p>
+                <h3>iPhone Unlocking</h3>
+                <p>Permanent unlock for all iPhone models. Works with all carriers worldwide.</p>
             </div>
+
             <div class="service-card">
                 <div class="service-icon"><i class="fab fa-android"></i></div>
-                <h3>Samsung Galaxy</h3>
-                <p>Remote code unlock for Samsung devices. Fast delivery, supports all carriers. No technical knowledge needed.</p>
+                <h3>Samsung Unlocking</h3>
+                <p>Fast remote unlock service for Samsung Galaxy devices. Instant delivery.</p>
             </div>
+
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Huawei · Oppo · Xiaomi</h3>
-                <p>Unlock codes for major Android brands. Remove network restrictions permanently. 24h turnaround.</p>
+                <h3>Huawei & Oppo Unlock</h3>
+                <p>Professional unlocking for Huawei, Oppo, Vivo, and other brands.</p>
             </div>
+
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-globe"></i></div>
-                <h3>Pacific Islands</h3>
-                <p>Specialised service for Fiji, Solomon Islands, Vanuatu, Samoa, Kiribati. Local support, reliable unlocking.</p>
+                <h3>Pacific Islands Service</h3>
+                <p>Special rates for Fiji, Solomon Islands, Vanuatu, Samoa, and others.</p>
             </div>
+
             <div class="service-card">
-                <div class="service-icon"><i class="fas fa-sim-card"></i></div>
+                <div class="service-icon"><i class="fas fa-lock-open"></i></div>
                 <h3>Carrier Lock Removal</h3>
-                <p>Remove restrictions from Digicel, Vodafone, Telstra and more. Use any SIM worldwide.</p>
+                <p>Remove carrier locks from all major networks. Permanent solution.</p>
             </div>
+
             <div class="service-card">
                 <div class="service-icon"><i class="fas fa-headset"></i></div>
-                <h3>Priority Support</h3>
-                <p>Dedicated assistance via WhatsApp, Facebook, email. Real humans, real fast.</p>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock support via WhatsApp, Facebook, and email.</p>
             </div>
         </div>
     </section>
 
-    <!-- How it works -->
     <section id="how-it-works" class="how-it-works">
-        <h2 class="section-title"><i class="fas fa-diagram-project"></i> How it works</h2>
-        <p class="section-subtitle">Simple, transparent process — from request to unlocked</p>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Simple 4-step process</p>
         <div class="process-steps">
-            <div class="step"><div class="step-number">01</div><h3>Contact</h3><p>Send IMEI & model via form or WhatsApp. Instant reply.</p></div>
-            <div class="step"><div class="step-number">02</div><h3>Verification</h3><p>We confirm eligibility & provide a service description.</p></div>
-            <div class="step"><div class="step-number">03</div><h3>Processing</h3><p>Unlock is performed remotely — most within hours.</p></div>
-            <div class="step"><div class="step-number">04</div><h3>Unlocked</h3><p>Insert any SIM. Permanent unlock, lifetime guarantee.</p></div>
-        </div>
-        <!-- Additional tech image -->
-        <div style="display: flex; justify-content: center; margin-top: 4rem;">
-            <img src="https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tech support concept" style="max-width: 280px; border-radius: 24px; border: 2px solid var(--accent-blue); opacity: 0.9;">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Contact Us</h3>
+                <p>Send your device details via our form or WhatsApp.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Get Quote</h3>
+                <p>Receive a transparent quote with no hidden fees.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Make Payment</h3>
+                <p>Confirm and pay through secure channels.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h3>Unlock Complete</h3>
+                <p>Receive unlock codes within 24 hours!</p>
+            </div>
         </div>
     </section>
 
-    <!-- Modal (same as before) -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
-            <h2><i class="fas fa-rocket" style="margin-right: 8px;"></i>Request unlock quote</h2>
-            <div class="form-message" id="formMessage" style="margin-bottom: 1.5rem;"></div>
+            <h2>Request Your Quote</h2>
+            <div class="form-message" id="formMessage"></div>
             <form id="contactForm">
-                <div class="form-group"><label>Full name</label><input type="text" id="name" placeholder="John Doe" required></div>
-                <div class="form-group"><label>Email</label><input type="email" id="email" placeholder="john@email.com" required></div>
-                <div class="form-group"><label>Phone (with country code)</label><input type="tel" id="phone" placeholder="+675 ..." required></div>
-                <div class="form-group"><label>Device / Service</label><input type="text" id="service" placeholder="iPhone 13 Pro Max" required></div>
-                <div class="form-group"><label>Message</label><textarea id="message" rows="3" placeholder="IMEI or details" required></textarea></div>
-                <button type="submit" class="form-submit" id="submitBtn"><span>Send request</span></button>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+675 7157 1523" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service Type</label>
+                    <input type="text" id="service" name="service" placeholder="e.g., iPhone Unlocking" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your request..." required></textarea>
+                </div>
+
+                <button type="submit" class="form-submit" id="submitBtn">Send Request</button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
-            <div class="footer-top" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 2rem;">
-                <div><h3 style="color:white;">Papumero Unlocks</h3><p style="color: #B0C7E9;">Premium unlocking for PNG & Pacific.</p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:papumerounlocks@gmail.com" style="color: var(--accent-blue);">papumerounlocks@gmail.com</a></p></div>
-                <div><h3 style="color:white;">Links</h3>
-                    <p><a href="#home" style="color:#B0C7E9;">Home</a></p><p><a href="#services" style="color:#B0C7E9;">Services</a></p><p><a href="#how-it-works" style="color:#B0C7E9;">Process</a></p>
+            <div class="footer-top">
+                <div class="footer-section">
+                    <h3>Papumero Unlocks</h3>
+                    <p>Professional phone unlocking services for Papua New Guinea and the Pacific Islands.</p>
+                    <p><a href="mailto:papumerounlocks@gmail.com" class="email-link">papumerounlocks@gmail.com</a></p>
                 </div>
-                <div>
-                    <h3 style="color:white;">Connect</h3>
-                    <div class="social-buttons" style="display: flex; gap: 1rem; margin-top: 1rem;">
-                        <button class="social-btn" id="facebookBtn"><i class="fab fa-facebook-f"></i><span class="social-btn-spinner"></span></button>
-                        <button class="social-btn" id="whatsappBtn"><i class="fab fa-whatsapp"></i><span class="social-btn-spinner"></span></button>
-                        <button class="social-btn" id="emailBtn"><i class="fas fa-envelope"></i></button>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#home" style="color: var(--text-gray);">Home</a></p>
+                    <p><a href="#services" style="color: var(--text-gray);">Services</a></p>
+                    <p><a href="#how-it-works" style="color: var(--text-gray);">How It Works</a></p>
+                    <p><a href="#contact" style="color: var(--text-gray);">Contact</a></p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-buttons">
+                        <button class="social-btn" id="facebookBtn" type="button" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="social-btn-spinner"></span>
+                        </button>
+                        <button class="social-btn" id="whatsappBtn" type="button" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="social-btn-spinner"></span>
+                        </button>
+                        <button class="social-btn" id="emailBtn" type="button" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom" style="margin-top: 2.5rem; text-align: center; color: #7F95B5;">© 2026 Papumero Unlocks. Tech-driven unlocking.</div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Papumero Unlocks. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script>
-        (function() {
-            emailjs.init('PudS2C4CpsT10OoiP');
+    <script type="text/javascript">
+        // Initialize EmailJS
+        emailjs.init('PudS2C4CpsT10OoiP');
 
-            // Modal
-            const modal = document.getElementById('contactModal');
-            const openModal = () => { modal.classList.add('active'); document.body.style.overflow='hidden'; };
-            const closeModal = () => { modal.classList.remove('active'); document.body.style.overflow=''; };
-            document.getElementById('headerQuoteBtn').addEventListener('click', openModal);
-            document.getElementById('heroQuoteBtn').addEventListener('click', openModal);
-            document.getElementById('modalClose').addEventListener('click', closeModal);
-            modal.addEventListener('click', (e) => { if(e.target===modal) closeModal(); });
-            document.addEventListener('keydown', (e) => { if(e.key==='Escape' && modal.classList.contains('active')) closeModal(); });
+        // Modal handling
+        const contactModal = document.getElementById('contactModal');
+        const modalClose = document.getElementById('modalClose');
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+        const submitBtn = document.getElementById('submitBtn');
 
-            // Form
-            const form = document.getElementById('contactForm');
-            const msgDiv = document.getElementById('formMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span class="spinner-inline"></span> Sending...';
-                msgDiv.className = ''; msgDiv.textContent = '';
-                const data = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    service: document.getElementById('service').value,
-                    message: document.getElementById('message').value,
-                    time: new Date().toLocaleString()
-                };
-                try {
-                    await emailjs.send('service_rmuj4ns', 'template_3gl0agg', data);
-                    msgDiv.style.color = 'var(--success)'; msgDiv.innerHTML = '✓ Quote sent! We’ll reply within 1 hour.';
-                    form.reset();
-                    setTimeout(closeModal, 2200);
-                } catch (err) {
-                    msgDiv.style.color = 'var(--error)'; msgDiv.textContent = 'Error. Try email directly.';
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Send request</span>';
-                }
-            });
+        function openModal() {
+            contactModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-            // Spinner delay for social (5s)
-            function setupDelayedSocial(btnId, url) {
-                const btn = document.getElementById(btnId);
-                let timer = null;
-                btn.addEventListener('click', function handler(e) {
-                    if (btn.disabled) return;
-                    btn.classList.add('loading');
-                    btn.disabled = true;
-                    timer = setTimeout(() => {
-                        window.open(url, '_blank');
-                        btn.classList.remove('loading');
-                        btn.disabled = false;
-                        btn.removeEventListener('click', handler);
-                        btn.addEventListener('click', handler); // re-attach
-                    }, 5000);
-                    // optional cancel if clicked again? we'll just let it open once
-                });
+        function closeModal() {
+            contactModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('headerQuoteBtn').addEventListener('click', openModal);
+        document.getElementById('heroQuoteBtn').addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeModal();
             }
+        });
 
-            setupDelayedSocial('facebookBtn', 'https://www.facebook.com/profile.php?id=61559767562861');
-            setupDelayedSocial('whatsappBtn', 'https://wa.me/67571571523');
-            document.getElementById('emailBtn').addEventListener('click', ()=> window.location.href='mailto:papumerounlocks@gmail.com');
-            document.getElementById('heroWhatsAppBtn').addEventListener('click', function() {
-                // also 5 sec spinner? we'll keep quick, but we can also implement same pattern:
-                const btn = document.getElementById('heroWhatsAppBtn');
+        // Form submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-inline"></span> Sending...';
+            formMessage.classList.remove('success', 'error');
+            formMessage.textContent = '';
+
+            const templateData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                time: new Date().toLocaleString()
+            };
+
+            try {
+                await emailjs.send(
+                    'service_rmuj4ns',
+                    'template_3gl0agg',
+                    templateData
+                );
+
+                formMessage.classList.add('success');
+                formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Quote sent successfully! We\'ll contact you within 1 hour.';
+                
+                contactForm.reset();
+                
+                setTimeout(() => {
+                    closeModal();
+                }, 2500);
+
+            } catch (error) {
+                console.error('Error:', error);
+                formMessage.classList.add('error');
+                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Request';
+            }
+        });
+
+        // Social buttons with 5-second spinner
+        function setupSocialButton(btnId, url) {
+            const btn = document.getElementById(btnId);
+            btn.addEventListener('click', () => {
                 if (btn.disabled) return;
+                
                 btn.classList.add('loading');
                 btn.disabled = true;
-                setTimeout(() => {
-                    window.open('https://wa.me/67571571523', '_blank');
+
+                const timer = setTimeout(() => {
+                    window.open(url, '_blank');
                     btn.classList.remove('loading');
                     btn.disabled = false;
                 }, 5000);
+
+                const clickHandler = () => {
+                    clearTimeout(timer);
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    btn.removeEventListener('click', clickHandler);
+                };
+
+                btn.addEventListener('click', clickHandler);
             });
+        }
 
-            // mobile menu
-            const toggle = document.getElementById('menuToggle');
-            const nav = document.getElementById('nav');
-            toggle.addEventListener('click', ()=> nav.classList.toggle('active'));
-            document.querySelectorAll('nav a').forEach(a=> a.addEventListener('click', ()=> nav.classList.remove('active')));
+        setupSocialButton('facebookBtn', 'https://www.facebook.com/profile.php?id=61559767562861');
+        setupSocialButton('whatsappBtn', 'https://wa.me/67571571523');
+        
+        document.getElementById('emailBtn').addEventListener('click', () => {
+            window.location.href = 'mailto:papumerounlocks@gmail.com';
+        });
 
-            // smooth scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if(href==='#') return;
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if(target) target.scrollIntoView({behavior:'smooth'});
-                });
+        document.getElementById('heroWhatsAppBtn').addEventListener('click', () => {
+            window.open('https://wa.me/67571571523', '_blank');
+        });
+
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
             });
+        });
 
-            // Ensure all logo images use specified link (already set)
-        })();
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
-    <!-- small style for spinner on hero button -->
-    <style>
-        .cta-button.loading { opacity: 0.8; pointer-events: none; }
-        .cta-button .spinner-inline { margin-right: 8px; }
-        .form-message { padding: 0.8rem; border-radius: 14px; }
-    </style>
 </body>
 </html>
