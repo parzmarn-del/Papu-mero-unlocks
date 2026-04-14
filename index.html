@@ -6,11 +6,8 @@
     <title>Papumero Unlocks - Premium Phone Unlocking Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@400;600;700&family=Poppins:wght@100;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <style>
-        /* ============================================
-           GLOBAL STYLES & RESET
-           ============================================ */
         * {
             margin: 0;
             padding: 0;
@@ -22,11 +19,8 @@
             --secondary-yellow: #F5C518;
             --primary-black: #000000;
             --dark-bg: #0a0a0a;
-            --dark-secondary: #1a1a2e;
             --text-light: #ffffff;
             --text-gray: #b0b0b0;
-            --accent-cyan: #00ffff;
-            --accent-purple: #9d4edd;
             --success-green: #00d084;
             --error-red: #ff4757;
         }
@@ -46,9 +40,6 @@
             line-height: 1.6;
         }
 
-        /* ============================================
-           PREMIUM ANIMATED BACKGROUND
-           ============================================ */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -77,7 +68,6 @@
             100% { background-position: 60px 60px; }
         }
 
-        /* Floating orbs for premium effect */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -117,9 +107,6 @@
             50% { transform: translate(50px, 50px); }
         }
 
-        /* ============================================
-           HEADER & NAVIGATION
-           ============================================ */
         header {
             position: fixed;
             top: 0;
@@ -261,9 +248,6 @@
             z-index: 1100;
         }
 
-        /* ============================================
-           HERO SECTION
-           ============================================ */
         .hero {
             margin-top: 100px;
             padding: 5rem 2rem;
@@ -389,9 +373,6 @@
             50% { transform: translateY(-25px); }
         }
 
-        /* ============================================
-           SERVICES SECTION
-           ============================================ */
         .services {
             padding: 6rem 2rem;
             max-width: 1400px;
@@ -496,9 +477,6 @@
             font-size: 0.95rem;
         }
 
-        /* ============================================
-           HOW IT WORKS SECTION
-           ============================================ */
         .how-it-works {
             padding: 6rem 2rem;
             max-width: 1400px;
@@ -566,9 +544,6 @@
             line-height: 1.6;
         }
 
-        /* ============================================
-           CONTACT FORM MODAL
-           ============================================ */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -797,9 +772,6 @@
             display: block;
         }
 
-        /* ============================================
-           SOCIAL BUTTONS WITH SPINNER
-           ============================================ */
         .social-btn {
             position: relative;
             width: 60px;
@@ -854,9 +826,6 @@
             display: none;
         }
 
-        /* ============================================
-           FOOTER
-           ============================================ */
         footer {
             background: rgba(10, 10, 10, 0.98);
             border-top: 2px solid var(--primary-yellow);
@@ -920,9 +889,6 @@
             font-size: 0.9rem;
         }
 
-        /* ============================================
-           RESPONSIVE DESIGN
-           ============================================ */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -1050,7 +1016,6 @@
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="animated-bg">
         <div class="grid-bg"></div>
         <div class="orb orb-1"></div>
@@ -1058,7 +1023,6 @@
         <div class="orb orb-3"></div>
     </div>
 
-    <!-- Header & Navigation -->
     <header>
         <div class="header-content">
             <a href="#home" class="logo-section">
@@ -1078,7 +1042,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -1097,7 +1060,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <h2 class="section-title">Our Premium Services</h2>
         <p class="section-subtitle">Comprehensive unlocking solutions for all devices and carriers</p>
@@ -1152,7 +1114,6 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
         <h2 class="section-title">How It Works</h2>
         <p class="section-subtitle">Simple 4-step process to get your phone unlocked</p>
@@ -1180,7 +1141,6 @@
         </div>
     </section>
 
-    <!-- Contact Form Modal -->
     <div class="modal-overlay" id="contactModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">
@@ -1221,7 +1181,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-top">
@@ -1264,53 +1223,39 @@
         </div>
     </footer>
 
-    <script>
-        // ============================================
-        // EMAILJS INITIALIZATION
-        // ============================================
-        (function() {
-            emailjs.init('PudS2C4CpsT10OoiP');
-            console.log('EmailJS initialized with Public Key: PudS2C4CpsT10OoiP');
-        })();
+    <script type="text/javascript">
+        // Initialize EmailJS with correct credentials
+        emailjs.init('PudS2C4CpsT10OoiP');
+        console.log('EmailJS initialized successfully');
 
-        // ============================================
-        // MODAL & FORM HANDLING
-        // ============================================
+        // Modal handling
         const contactModal = document.getElementById('contactModal');
         const modalClose = document.getElementById('modalClose');
         const contactForm = document.getElementById('contactForm');
         const formMessage = document.getElementById('formMessage');
         const submitBtn = document.getElementById('submitBtn');
 
-        const headerQuoteBtn = document.getElementById('headerQuoteBtn');
-        const heroQuoteBtn = document.getElementById('heroQuoteBtn');
-
-        // Open modal
-        function openContactModal() {
+        function openModal() {
             contactModal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        // Close modal
-        function closeContactModal() {
+        function closeModal() {
             contactModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
-        headerQuoteBtn.addEventListener('click', openContactModal);
-        heroQuoteBtn.addEventListener('click', openContactModal);
-        modalClose.addEventListener('click', closeContactModal);
+        document.getElementById('headerQuoteBtn').addEventListener('click', openModal);
+        document.getElementById('heroQuoteBtn').addEventListener('click', openModal);
+        modalClose.addEventListener('click', closeModal);
 
         contactModal.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                closeContactModal();
-            }
+            if (e.target === contactModal) closeModal();
         });
 
-        // Escape key to close modal
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && contactModal.classList.contains('active')) {
-                closeContactModal();
+                closeModal();
             }
         });
 
@@ -1318,14 +1263,13 @@
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="spinner-inline"></span><span>Sending...</span>';
             formMessage.classList.remove('success', 'error');
             formMessage.textContent = '';
 
-            // Prepare form data - MATCHING TEMPLATE VARIABLES EXACTLY
-            const formData = {
+            // Prepare form data matching template variables
+            const templateData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
@@ -1334,97 +1278,76 @@
                 time: new Date().toLocaleString()
             };
 
-            console.log('Sending email with data:', formData);
-            console.log('Service ID: service_rmuj4ns');
-            console.log('Template ID: template_lam4hw4');
-
             try {
-                // Send email using EmailJS
+                console.log('Sending email with data:', templateData);
+                
                 const response = await emailjs.send(
                     'service_rmuj4ns',
-                    'template_lam4hw4',
-                    formData
+                    'template_3gl0agg',  // CORRECT TEMPLATE ID
+                    templateData
                 );
 
-                console.log('Email sent successfully!', response);
+                console.log('✓ Email sent successfully!', response);
 
-                // Show success message
                 formMessage.classList.add('success');
                 formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Quote request sent successfully! We\'ll contact you within 1 hour.';
                 
-                // Reset form
                 contactForm.reset();
                 
-                // Close modal after 2.5 seconds
                 setTimeout(() => {
-                    closeContactModal();
-                    formMessage.classList.remove('success');
+                    closeModal();
                 }, 2500);
 
             } catch (error) {
-                console.error('EmailJS error details:', error);
+                console.error('✗ Error sending email:', error);
 
-                // Show error message
                 formMessage.classList.add('error');
-                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send request. Please try again or email us directly at papumerounlocks@gmail.com';
+                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send request. Please try again or email papumerounlocks@gmail.com';
             } finally {
-                // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<span>Send Request</span>';
             }
         });
 
-        // ============================================
-        // SOCIAL BUTTONS WITH 5-SECOND SPINNER
-        // ============================================
-        const facebookBtn = document.getElementById('facebookBtn');
-        const whatsappBtn = document.getElementById('whatsappBtn');
-        const emailBtn = document.getElementById('emailBtn');
+        // Social button handler with 5-second spinner
+        function setupSocialButton(btnId, url) {
+            const btn = document.getElementById(btnId);
+            btn.addEventListener('click', () => {
+                if (btn.disabled) return;
+                
+                btn.classList.add('loading');
+                btn.disabled = true;
 
-        function handleSocialClick(btn, url) {
-            if (btn.disabled) return;
+                const timer = setTimeout(() => {
+                    window.open(url, '_blank');
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                }, 5000);
 
-            btn.classList.add('loading');
-            btn.disabled = true;
+                // Allow cancellation
+                const clickHandler = () => {
+                    clearTimeout(timer);
+                    btn.classList.remove('loading');
+                    btn.disabled = false;
+                    btn.removeEventListener('click', clickHandler);
+                };
 
-            const timer = setTimeout(() => {
-                window.open(url, '_blank');
-                btn.classList.remove('loading');
-                btn.disabled = false;
-            }, 5000);
-
-            // Allow cancellation if clicked again during countdown
-            const clickHandler = () => {
-                clearTimeout(timer);
-                btn.classList.remove('loading');
-                btn.disabled = false;
-                btn.removeEventListener('click', clickHandler);
-            };
-
-            btn.addEventListener('click', clickHandler);
+                btn.addEventListener('click', clickHandler);
+            });
         }
 
-        facebookBtn.addEventListener('click', () => {
-            handleSocialClick(facebookBtn, 'https://www.facebook.com/profile.php?id=61559767562861');
-        });
-
-        whatsappBtn.addEventListener('click', () => {
-            handleSocialClick(whatsappBtn, 'https://wa.me/67571571523');
-        });
-
-        emailBtn.addEventListener('click', () => {
+        setupSocialButton('facebookBtn', 'https://www.facebook.com/profile.php?id=61559767562861');
+        setupSocialButton('whatsappBtn', 'https://wa.me/67571571523');
+        
+        document.getElementById('emailBtn').addEventListener('click', () => {
             window.location.href = 'mailto:papumerounlocks@gmail.com';
         });
 
-        // Hero WhatsApp button (no spinner)
-        const heroWhatsAppBtn = document.getElementById('heroWhatsAppBtn');
-        heroWhatsAppBtn.addEventListener('click', () => {
+        document.getElementById('heroWhatsAppBtn').addEventListener('click', () => {
             window.open('https://wa.me/67571571523', '_blank');
         });
 
-        // ============================================
-        // MOBILE MENU TOGGLE
-        // ============================================
+        // Mobile menu toggle
         const menuToggle = document.getElementById('menuToggle');
         const nav = document.getElementById('nav');
 
@@ -1432,16 +1355,13 @@
             nav.classList.toggle('active');
         });
 
-        // Close menu when link is clicked
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
             });
         });
 
-        // ============================================
-        // SMOOTH SCROLL
-        // ============================================
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const href = this.getAttribute('href');
@@ -1457,25 +1377,6 @@
                 }
             });
         });
-
-        // ============================================
-        // LAZY LOADING FOR IMAGES
-        // ============================================
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                        }
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[loading="lazy"]').forEach(img => imageObserver.observe(img));
-        }
     </script>
 </body>
     </html>
