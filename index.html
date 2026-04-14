@@ -1191,12 +1191,12 @@
             <form id="contactForm">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
-                    <input type="text" id="name" name="from_name" placeholder="Enter your full name" required>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="reply_to" placeholder="your@email.com" required>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
                 </div>
 
                 <div class="form-group">
@@ -1205,13 +1205,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="device">Device Model *</label>
-                    <input type="text" id="device" name="device_model" placeholder="e.g., iPhone 13 Pro, Samsung Galaxy S21" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="imei">IMEI Number (Optional)</label>
-                    <input type="text" id="imei" name="imei" placeholder="15-digit IMEI number">
+                    <label for="service">Service Type *</label>
+                    <input type="text" id="service" name="service" placeholder="e.g., iPhone Unlocking, Samsung Unlock" required>
                 </div>
 
                 <div class="form-group">
@@ -1275,6 +1270,7 @@
         // ============================================
         (function() {
             emailjs.init('PudS2C4CpsT10OoiP');
+            console.log('EmailJS initialized with Public Key: PudS2C4CpsT10OoiP');
         })();
 
         // ============================================
@@ -1311,40 +1307,68 @@
             }
         });
 
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeContactModal();
+            }
+        });
+
         // Form submission with EmailJS
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="spinner-inline"></span><span>Sending...</span>';
             formMessage.classList.remove('success', 'error');
             formMessage.textContent = '';
 
-            try {
-                const response = await emailjs.send('service_rmuj4ns', 'template_lam4hw4', {
-                    to_email: 'papumerounlocks@gmail.com',
-                    from_name: document.getElementById('name').value,
-                    reply_to: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    device_model: document.getElementById('device').value,
-                    imei: document.getElementById('imei').value || 'Not provided',
-                    message: document.getElementById('message').value
-                });
+            // Prepare form data - MATCHING TEMPLATE VARIABLES EXACTLY
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value,
+                time: new Date().toLocaleString()
+            };
 
+            console.log('Sending email with data:', formData);
+            console.log('Service ID: service_rmuj4ns');
+            console.log('Template ID: template_lam4hw4');
+
+            try {
+                // Send email using EmailJS
+                const response = await emailjs.send(
+                    'service_rmuj4ns',
+                    'template_lam4hw4',
+                    formData
+                );
+
+                console.log('Email sent successfully!', response);
+
+                // Show success message
                 formMessage.classList.add('success');
                 formMessage.innerHTML = '<i class="fas fa-check-circle"></i> Quote request sent successfully! We\'ll contact you within 1 hour.';
                 
+                // Reset form
                 contactForm.reset();
                 
+                // Close modal after 2.5 seconds
                 setTimeout(() => {
                     closeContactModal();
-                }, 3000);
+                    formMessage.classList.remove('success');
+                }, 2500);
 
             } catch (error) {
-                console.error('EmailJS error:', error);
+                console.error('EmailJS error details:', error);
+
+                // Show error message
                 formMessage.classList.add('error');
-                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send request. Please try again or contact us directly.';
+                formMessage.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to send request. Please try again or email us directly at papumerounlocks@gmail.com';
             } finally {
+                // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<span>Send Request</span>';
             }
@@ -1454,4 +1478,4 @@
         }
     </script>
 </body>
-</html>
+    </html>
